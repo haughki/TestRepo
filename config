@@ -1,4 +1,4 @@
 strong=yes
 hands=correct
-master=truetest
-Branch=testing
+master=true
+testBranch=testing
