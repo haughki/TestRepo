@@ -2,3 +2,4 @@ strong=yes
 hands=correct
 master=true
 testBranch=testing
+useQuantum=false
