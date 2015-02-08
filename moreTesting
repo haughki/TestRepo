@@ -1,4 +1,5 @@
 # setup test resources
 # create mock dependency
 # run main
-# ensure expected output
+    # mock dependency to return canned value
+# setup expectations
