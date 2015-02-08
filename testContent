@@ -1,3 +1,6 @@
 /************
  * section  *
  ************/
+[name]="TestRepo"
+[loc]="San Rafael, CA"
+[NoContent]="Error: content unavailable"
