@@ -1,5 +1,5 @@
 version = 0.0.1
 name = TestRepo
 output = jar
-docs = com.doctool
+docs = com.doctool.better
 test = org.gunit.integration
