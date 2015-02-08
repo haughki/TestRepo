@@ -3,3 +3,4 @@ hands=correct
 master=true
 testBranch=testing
 defineHead=headless
+rebase=true
