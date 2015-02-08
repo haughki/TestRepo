@@ -2,3 +2,4 @@ version = 0.0.1
 name = TestRepo
 output = jar
 docs = com.doctool
+test = org.sunit.integration
