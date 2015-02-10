@@ -3,4 +3,4 @@ name = TestRepo
 output = jar
 docs = com.doctool.better
 test = org.gunit.integration
-margin = 2
+continuous = true
