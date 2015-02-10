@@ -5,3 +5,4 @@
 [loc]="San Rafael, CA"
 [NoContent]="Error: content unavailable"
 [fishType]="Wahoo"
+[corona]="exterior"
