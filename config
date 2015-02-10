@@ -6,3 +6,4 @@ rebase=true
 useQuantum=false
 picoBrain=extended
 tlsAlgorithm=DHE_AEAD
+TLS=true
