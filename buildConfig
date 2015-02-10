@@ -5,4 +5,5 @@ docs = com.doctool.better
 test = org.gunit.integration
 continuous = true
 integrationTests = daily
+python=2.7
 ruby=2.3
