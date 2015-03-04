@@ -1,8 +1,0 @@
-# setup test resources
-# create mock dependency
-# run main
-    # mock dependency to return canned value
-    # setup other expectations
-    # do something we can test!!
-
-# assertions
