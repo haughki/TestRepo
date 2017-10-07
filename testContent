@@ -8,3 +8,4 @@
 [corona]="exterior"
 [barsoomian]="La Gruk"
 [totallyNew]="today"
+[secondChange]="today"
