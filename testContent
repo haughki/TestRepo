@@ -6,3 +6,4 @@
 [NoContent]="Error: content unavailable"
 [startingAgain] = "fug"
 [exp_rebase_new] = "1"
+[exp_rebase_self] = "1"
