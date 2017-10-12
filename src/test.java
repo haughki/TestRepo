@@ -5,6 +5,6 @@ public class Main {
         System.out.println("TestRepo go!");
         System.out.println("mast rebase double 1");
         System.out.println("mast rebase double 2");
-        System.out.println("mast rebase double 3");
+        System.out.println("temp repo change");
     }
 }
