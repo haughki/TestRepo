@@ -5,5 +5,4 @@
 [loc]="San Rafael, CA"
 [NoContent]="Error: content unavailable"
 [startingAgain] = "fug"
-[exp_rebase_new] = "1"
-[exp_temp_branch] = "1"
+[commit-share] = "first change"
