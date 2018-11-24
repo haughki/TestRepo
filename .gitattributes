@@ -1,0 +1,7 @@
+* text=auto
+
+*.js text
+
+*.sh eol=lf
+
+*.win eol=crlf
