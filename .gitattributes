@@ -1,7 +1,6 @@
 * text=auto
 
 *.java text
-*.js text
 
 *.sh eol=lf
 

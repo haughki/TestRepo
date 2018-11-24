@@ -1,0 +1,60 @@
+#! META
+name: chkp-dbedit-gateways-cluster-members-check-SIC-nomds
+description: Check the status of the SIC for all the gateways on management server
+type: monitoring
+monitoring_interval: 10 minutes
+requires:
+    vendor: checkpoint
+    mds:
+        neq: true
+    role-management: true
+    os.name: gaia
+    or:
+        -
+            os.version: "R80.10"
+        -
+            os.version: "R80.20"
+
+#! COMMENTS
+trust-connection-state:
+    skip-documentation: true
+
+
+
+#STEP 1 -- Collect GW info
+
+#! REMOTE::SSH
+${nice-path} -n 15 echo -e "query network_objects, (type='cluster_member' & vsx_cluster_member='true' & vs_cluster_member='true') | (type='cluster_member' & (! vs_cluster_member='true')) | (vsx_netobj='true') | (type='gateway'&cp_products_installed='true' & (! vs_netobj='true') & location='internal')\n-q\n" | ${nice-path} -n 15 dbedit -local | awk '/Object Name:/ {print $3} /^    ipaddr\:/ {print $2}' |  awk '!a[$0]++' | awk 'NF > 0' | xargs -n 2 echo "Result: "
+
+
+#! PARSER::AWK
+
+#Result: GW12 10.0.2.33
+/^Result/{
+        step2 = $2":"$3
+        writeDynamicVariable("GWInfo", step2)
+}
+
+
+#STEP 2 -- Collect SIC state
+
+#! REMOTE::SSH
+GWName=$(awk -v var="${GWInfo}" 'BEGIN { split(var,splitArr,":"); print splitArr[1]}') && GWIP=$(awk -v var="${GWInfo}" 'BEGIN { split(var,splitArr,":"); print splitArr[2]}'); ${nice-path} -n 15 SICstate=$(cpstat -h $GWIP os | awk '/^Product Name:/ {print "OK"} /^Failed to establish session with AMON server/ {print "NOK"}'); ${nice-path} -n 15 echo "Result ip: "$GWIP" hostname: "$GWName" SICstate: "$SICstate
+
+#! PARSER::AWK
+
+BEGIN {
+    status = 0
+}
+
+#Result ip: 10.0.2.34 hostname: GW11 SICstate: OK
+/^Result/ {
+    if ($7 == "OK")
+        status = 1
+    else
+        status = 0
+
+    t["ip"] = $3
+    t["name"] = $5
+    writeDoubleMetric("trust-connection-state", t, "gauge", 300, status)
+}
